@@ -164,16 +164,16 @@ DNA_sequence_table.prototype.create = function(ori, mut){
 	var diff = this.origin.length - this.mutate.length;
 	if(diff > 0){
 		for(var i = 0; i < diff; i++){
-			var ran_pos = get_random_number(this.mutate.length);
+			var ran_pos = get_rand_num(this.mutate.length);
 			this.mutate.splice(ran_pos, 0, '-');
 		}
 	}
 
-	var ran_pos = get_random_number(this.mutate.length);
+	var ran_pos = get_rand_num(this.mutate.length);
 	this.mutate.splice(ran_pos, 0, '-');
-	var ran_pos2 = get_random_number(this.origin.length);
+	var ran_pos2 = get_rand_num(this.origin.length);
 	while(ran_pos == ran_pos2){
-	    ran_pos2 = get_random_number(this.origin.length);
+	    ran_pos2 = get_rand_num(this.origin.length);
 	}
 	this.origin.splice(ran_pos2, 0, '-');
 	//update html
