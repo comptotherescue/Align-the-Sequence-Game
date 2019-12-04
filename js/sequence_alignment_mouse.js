@@ -1,53 +1,40 @@
-/**
-*
-* @fileoverview Sequence Matching Game
-* @author ezoneid@gmail.com (Yeonsung Kim)
-*/
-
 //global constant variables
-/** @const */ var MATCH_COLOR = "#90EE90";
-/** @const */ var MISMATCH_COLOR = "#809fff";
-/** @const */ var GAP_COLOR = "#ff6666";	
+ var MATCH_COLOR = "#90EE90";
+ var MISMATCH_COLOR = "#fff";
+ var GAP_COLOR = "#fff";	
 
-/** @const */var ITEM_BACKGORUND_OPACITY = 0.7;
+var ITEM_BACKGORUND_OPACITY = 0.7;
 
-/** @const */var ORIGIN_NAME = "#origin";
-/** @const */var MUTATE_NAME = "#mutate";
+var ORIGIN_NAME = "#origin";
+var MUTATE_NAME = "#mutate";
 
 //level values
-/** @const */var LEVLE_ONE_LENGTH = 10;
-/** @const */var LEVLE_ONE_MUTATE_SAME = 0.8;
-/** @const */var LEVLE_ONE_DELETE_COUNT = 2;
+var LEVLE_ONE_LENGTH = 10;
+var LEVLE_ONE_MUTATE_SAME = 0.8;
+var LEVLE_ONE_DELETE_COUNT = 2;
 
-/** @const */var LEVLE_TWO_LENGTH = 12;
-/** @const */var LEVLE_TWO_MUTATE_SAME = 0.7;
-/** @const */var LEVLE_TWO_DELETE_COUNT = 3;
+var LEVLE_TWO_LENGTH = 12;
+var LEVLE_TWO_MUTATE_SAME = 0.7;
+var LEVLE_TWO_DELETE_COUNT = 3;
 
-/** @const */var LEVLE_THREE_LENGTH = 15;
-/** @const */var LELVE_THREE_MUTATE_SAME = 0.6;
-/** @const */var LLEVEL_THREE_DELETE_COUNT = 4;
+var LEVLE_THREE_LENGTH = 15;
+var LELVE_THREE_MUTATE_SAME = 0.6;
+var LLEVEL_THREE_DELETE_COUNT = 4;
 
-/** @public */var match_score = parseInt($("#match_score").val());
-/** @public */var mismatch_score = parseInt($("#mismatch_score").val());
-/** @public */var gap_penalty = parseInt($("#gap_score").val()); 
+var match_score = parseInt($("#match_score").val());
+var mismatch_score = parseInt($("#mismatch_score").val());
+var gap_penalty = parseInt($("#gap_score").val()); 
 
-/** @public */var top_score = -Number.MAX_VALUE;
-/** @public */var maximum_score = 0; 
+var top_score = -Number.MAX_VALUE;
+var maximum_score = 0; 
 
 //level variables 
-/** @public */var current_level_length;
-/** @public */var current_level_prob;
-/** @public */var current_level_delete_count;
-/** @public */var USE_SCORE_TABLE = 0;
-/** @public */var score_table;
+var current_level_length;
+var current_level_prob;
+var current_level_delete_count;
+var USE_SCORE_TABLE = 0;
+var score_table;
 
-/**
- * Make DNA column for sequence table  
- * @param {String} table row name
- * @param {String} letter of DNA 
- * @param {Number} index of the DNA letter
-
- */
 function add_DNA_column(row_name, item, index){
 
 	var id = row_name.replace('#', '');
@@ -60,23 +47,12 @@ function add_DNA_column(row_name, item, index){
 }
 
 
-/**
- * Make DNA column for sequence table  
- * @param {String} table row name
- * @param {Number} Score 
- * @param {String} type of the score (Match, Mismatch or gap)
- */
 function add_score_column(row_name, score, type){
 
 	$(row_name).append('<span class = \"score_board\" id =\"' + type + '\"><span class=\"score_background\"><span>' + score + '</span></span></span>');
 }
 
 
-/**
- * Check whether item is undefined or not
- * {Object} item 
- * @return true if item is undefined false otherwise. 
- */
 function is_undefined(item){
 	if(typeof item === 'undefined'){
 		return true; 
@@ -87,12 +63,6 @@ function is_undefined(item){
 }
 
 
-/**
- * Fill DNA table item background   
- * @param {String} target 
- * @param {String} Color name by hex 
- * @param {Number} Opacity
- */
 function fill_background_color(target, color_name, opacity){
 		$(target).css({
 			"background-color" : color_name,
@@ -103,11 +73,6 @@ function fill_background_color(target, color_name, opacity){
 
 
 
-
-/**
- * DNA sequence table object.
- * @constructor
- */
 var DNA_sequence_table = function() {
 
 	//origin, mutate sequence array
@@ -127,12 +92,6 @@ var DNA_sequence_table = function() {
 };
 
 
-
-/**
- * Create origin and mutate sequence table by ginve sequences.  
- * @param {String} Original sequence
- * @param {String} Mutated sequence 
- */
 DNA_sequence_table.prototype.create = function(ori, mut){
 
 	var len = ori.length >= mut.length ? ori.length:mut.length;
@@ -158,7 +117,7 @@ DNA_sequence_table.prototype.create = function(ori, mut){
 	sequence_matrix = get_maximum_seq_alignment_score(this.origin, this.mutate, match_score, mismatch_score, gap_penalty, USE_SCORE_TABLE, score_table);
 	//get optimal score from the matrix
 	maximum_score = sequence_matrix.table[this.mutate.length][this.origin.length];
-	$("#info4").text("Max Score : " + maximum_score);
+	$("#max_score").text("Max Score : " + maximum_score);
 	
 	// //add gap at random position
 	var diff = this.origin.length - this.mutate.length;
@@ -302,7 +261,7 @@ DNA_sequence_table.prototype.calculate = function(){
 			add_score_column("#score_summing", sum, 'summing');
 		}
 
-		$("#info5").text("Your Score : " + this.total_score);
+		$("#current_score").text("Your Score : " + this.total_score);
 
 
 		$("#score").fadeIn('slow');
@@ -384,26 +343,14 @@ function score_update(score_seq, score, type, item1, item2, color){
  * @param {Number} Total score of the table 
  */
 function check_game_end_condition(score){
-
-
 	if(start){
 		if(score === maximum_score){
 
-			$("#result").hide().text("Great Job! You got the maximum score.").fadeIn('slow');
+			$("#result").hide().text("Result: Congratulations! You reached the maximum score.").fadeIn('slow');
 			start = 0;
 			time_stop();
-
 		}
-
-		else{
-
-			$("#result").hide().text("Keep trying").fadeIn('slow').fadeOut('slow');
-
-		}
-
 	}
-	
-
 }
 
 
@@ -635,8 +582,8 @@ function recreate(seq_table){
 	
 	top_score = -Number.MAX_VALUE;
 
-	$("#seq_one_str").text("Sequence One : " + seq1);
-	$("#seq_two_str").text("Sequence Two : " + seq2);
+	$("#seq_one_str").text("First Sequence : " + seq1);
+	$("#seq_two_str").text("Second Sequence : " + seq2);
 
 	seq_table.create(seq1, seq2);
 
@@ -647,14 +594,6 @@ function recreate(seq_table){
 	
 }
 
-/**
- * Control the difficulty 
- * @param {BUTTON} target button
- * @param {DNA_sequence_table} table that will be changed
- * @param {Number} length of level, level 1 : 10 level 2 : 12 level 3 : 15
- * @param {Number} probability of mutation, level 1 : 20%, level 2 : 30%, level 3 : 40%
- * @param {Number} maximum possible deletion, level 1 : 2, level 2 : 3, level 3 : 4 
- */
 function level_change(target, table, length, prob, delete_num){
 		$('.level_buttons .btn[id*="level_"]').removeClass("active");
 
@@ -671,9 +610,9 @@ function level_change(target, table, length, prob, delete_num){
 
 	
 
-/**
- * Main Function 
- */
+
+
+
 function init(){
 
 	//show timer
@@ -682,6 +621,7 @@ function init(){
 	 $("#change_score_table").hide();
 	 $("#use_fixed_score").hide();
 	 //set initial level 
+
 	 current_level_length = LEVLE_ONE_LENGTH;
 	 current_level_prob = LEVLE_ONE_MUTATE_SAME;
 	 current_level_delete_count = LEVLE_ONE_DELETE_COUNT;
@@ -697,8 +637,8 @@ function init(){
 	$(MUTATE_NAME).hide();
 	
 	
-	$("#seq_one_str").text("Sequence One : " + seq1);
-	$("#seq_two_str").text("Sequence Two : " + seq2);
+	$("#seq_one_str").text("First Sequence : " + seq1);
+	$("#seq_two_str").text("Second Sequence : " + seq2);
 
 
 	//get score_table
@@ -729,13 +669,9 @@ function init(){
 	
 	//button init
 	$("#start").on("click", function(){
-
+		$("#result").hide().text("Status : Game in progress!").fadeIn('slow');
 		start = 1;
 		time_start();
-
-		$("#result").hide().text("Game Start!!").fadeIn(2000).fadeOut('slow');
-
-
 	});
 		
 

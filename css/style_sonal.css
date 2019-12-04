@@ -1,158 +1,12 @@
-.container-fluid .row{
-	margin-bottom: 20px;
+.container-fluid {
+	background-image: url('../img/dna.jpg');
 }
-
-span {
-  display: inline-block;
-}
-.howto{
-	font-weight: bold;
-	font-size: 15px;
-	margin-left: 30px;
-}
-#seq_one_str, #seq_two_str{
-	font-weight: bold;
-	font-size: 18px;
-}
-
-#time {
-	font-size: 20px;
-}
-
-#result{
-	
-	font-size: 20px;
-	color: red;
-}
-.level_buttons {
-	margin-left: 30px;
-}
-.container .row{
-	margin: 0 !important;
-}
-
-#origin,#mutate,#score{
-	margin-bottom: 10px;
-	
-}
-#sequence_table {
-	font-size: 20px;
-}
-#sequence_table button{
-	border-radius: 50px;
-}
-
-#sequence_table .col-md-12{
-	border: 2px solid black;
-}
-#item{
-	font-size: 25px;
-
-}
-.letter{
-	text-align: center;
-}
-.letterA{
-	color :green;
-
-}
-.letterT{
-	color: blue;
-}
-.letterC{
-	color: red;
-}
-.letterG{
-	color: black;
-
-}
-#score_table{
-	text-align: center;
-	font-weight: bold;
-}
-#score_table > .table > thead > tr > th,
-#score_table > .table > tbody > tr > th{
-	text-align: center;
-
-}
-
-#score_table > .table > tbody > tr > td > input{
-	width: 50px;
-	text-align: center;
-}
-
-.letter_background{
-	height : 100%;
-	width:50px;
-	margin: auto;
-	padding: 10px;
-	border: 1px solid black;
-	text-align: center;
-	
-}
-
-.score_background{
-	height : 100%;
-	width:50px;
-	margin: auto;
-	padding: 10px;
-	border: 1px solid black;
-	text-align: center;
-	
-}
-
-.selected{
-	border: 2px solid green;
-}
-
-#util_buttons{
-	margin-top: 40px;
-}
-.info{
-	margin-left: 50px;
-}
-
-
-#info1, #match{
-	font-weight: bold;
-	color: green;
-}
-
-#info2, #mismatch{
-	font-weight: bold;
-	color: #809fff;
-}
-
-#info3, #gap{
-	font-weight: bold;
-	color: red;
-}
-#info4, #info5{
-	border: 1px solid;
-	border-radius: 20px;
-	font-size: 20px;
-	text-align: center;
-}
-
-#summing{
-	font-weight: bold;
-	color: #191970;
-}
-
-.level_exp{
-	border: 2px solid black;
-	margin-top: 40px;
-	text-align: center;
-
-}
-
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   color: white;
@@ -164,6 +18,7 @@ span {
 .carousel-item {
   height: 32rem;
 }
+
 .carousel-item > img {
   position: absolute;
   top: 0;
@@ -173,34 +28,28 @@ span {
 }
 
 .carousel-control-prev {
-  background: rgba(34,110,147,1);
+
 }
 
 .carousel-control-next {
-  background: rgba(34,110,147,1);
+
 }
 
 .carousel-inner {
-  background: rgba(34,110,147,1);
-}
 
-#title{
 }
 
 #title_wrapper{
   justify-content: center;
   color: white;
-  background-color: rgba(34,110,147,1);
-    background-image: url(https://ssl.gstatic.com/atari/images/simple-header-blended-small.png);
 }
 .container {
 	max-width: 960px;
+	background-image: url(https://ssl.gstatic.com/atari/images/simple-header-blended-small.png);
+
   }
   
-  /*
-   * Custom translucent site header
-   */
-  
+ 
   .site-header {
 	background-color: rgba(0, 0, 0, .85);
 	-webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -213,57 +62,6 @@ span {
   .site-header a:hover {
 	color: #fff;
 	text-decoration: none;
-  }
-  
-  /*
-   * Dummy devices (replace them with your own or something else entirely!)
-   */
-  
-  .product-device {
-	position: absolute;
-	right: 10%;
-	bottom: -30%;
-	width: 300px;
-	height: 540px;
-	background-color: #333;
-	border-radius: 21px;
-	-webkit-transform: rotate(30deg);
-	transform: rotate(30deg);
-  }
-  
-  .product-device::before {
-	position: absolute;
-	top: 10%;
-	right: 10px;
-	bottom: 10%;
-	left: 10px;
-	content: "";
-	background-color: rgba(255, 255, 255, .1);
-	border-radius: 5px;
-  }
-  
-  .product-device-2 {
-	top: -25%;
-	right: auto;
-	bottom: 0;
-	left: 5%;
-	background-color: #e5e5e5;
-  }
-  
-  
-  /*
-   * Extra utilities
-   */
-  
-  .flex-equal > * {
-	-ms-flex: 1;
-	flex: 1;
-  }
-  @media (min-width: 768px) {
-	.flex-md-equal > * {
-	  -ms-flex: 1;
-	  flex: 1;
-	}
   }
   
   .overflow-hidden { overflow: hidden; }

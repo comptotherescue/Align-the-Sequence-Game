@@ -18,74 +18,19 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
-			<div style="padding: 20px">
-				<div class="card">
-					<div class="card_container">
-					<h4><b> Game instructions </b></h4> 
-					<p>
-						<ul>
-							<li>Try to get as many matches and as few mismatches and gaps as possible</li> 
-							<li>Drag a nucleotide to the right to add a gap.</li>
-							<li>Drag to the left to remove a gap.</li>
-							<li>A gap appearing in both sequences at the same location will be automatically removed.</li>
-						</ul>
-					</p> 
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row" style="padding: 20px">
-			<div class="row level_buttons">
-				<div class="col-md-6">
-					<button class="btn btn-primary" id = "start">Start</button>
-					<button class="btn btn-success" id = "level_one">Level 1</button>
-					<button class="btn btn-success " id = "level_two">Level 2</button>
-					<button class="btn btn-success " id = "level_three">Level 3</button>
-				</div>
-			</div>
-			</div>
 				<div>
 						<div style="display:flex">	
 							<div style="padding: 0px 10px;" id="time"> </div>
-							<div id="info4"></div>
-							<div id="info5"></div>
+							<div id="max_score"></div>
+							<div id="current_score"></div>
+							<div id="result"></div>
 						</div>
 						<div class="row" style="padding: 20px">
-								<div class="col-md-6" id="seq_one_str"> </div>
-								<div class="col-md-6" id="seq_two_str"> </div>
+								<div class="col-md-6" style="color: oldlace" id="seq_one_str"> </div>
+								<div class="col-md-6" style="color: oldlace" id="seq_two_str"> </div>
 						</div>
 				</div>
 		
-		<div class="row info">
-				<div class='col-md-4' id = "score_table">
-					<table class="table table-striped">
-						 <thead>
-							 <tr>
-						      <th>#</th>
-						      <th class="letterA">A</th>
-						      <th class="letterC">C</th>
-						      <th class="letterG">G</th>
-						      <th class="letterT">T</th>
-						    </tr>
-						    <tbody id="score_table_body">
-						    	
-						    </tbody>
-
-						 </thead>
-					</table>
-				</div>
-				<div class= "col-md-2" id="info1">Match Score <input type="number" id="match_score" value="20"></div>
-			<div class ="col-md-2" id="info2">Mismatch Score<input type="number" id="mismatch_score" value="-10"></div>
-			<div class = "col-md-2" id="info3">Gap Score<input id="gap_score" type="number" value="-20"></div>
-			<div class = "col-md-2" style="padding:15px 20px">
-				<button class="btn btn-warning" id = "use_score_talbe">Customize Score Table</button>
-				<button class="btn btn-warning" id = "use_fixed_score">Use Simple Scores</button>
-				<button class="btn btn-danger" id = "change_score_table">Update Custom Scores</button>
-			</div>
-			</div>
-
-		<div style="text-align: center;padding: 20px;" id="result"></div>
 		<div class="container" id="sequence_table">
 		<div class="row">
 
@@ -108,7 +53,43 @@
 		<div class="row">
 				<div class="col-md-12" id="score"> </div>
 		</div>
-		<div><button class = "btn btn-primary" id="regenerate_sequence">Recreate Table</button></div>
+		<div class="row" style="padding: 20px">
+			<div class="row level_buttons">
+				<div class="col-md-6">
+					<button class="btn btn-primary" id = "start">Start</button>
+					<button class = "btn btn-primary" id="regenerate_sequence">Recreate Table</button>
+				</div>
+			</div>
+			</div>
+		<div class="row info">
+				<div class='col-md-4' id = "score_table">
+					<table class="table">
+						 <thead>
+							 <tr>
+						      <th>#</th>
+						      <th class="letterA">A</th>
+						      <th class="letterC">C</th>
+						      <th class="letterG">G</th>
+						      <th class="letterT">T</th>
+						    </tr>
+						    <tbody id="score_table_body">
+						    	
+						    </tbody>
+
+						 </thead>
+					</table>
+				</div>
+			</div>	
+			<div class="row info">
+			<div id="info1">Match Score <input style="color: black" type="number" id="match_score" value="20"></div>
+			<div id="info2">Mismatch Score<input  style="color: black" type="number" id="mismatch_score" value="-10"></div>
+			<div id="info3">Gap Score<input style="color: black" id="gap_score" type="number" value="-20"></div>
+			<div style="padding:15px 20px">
+				<button class="btn btn-warning" id = "use_score_talbe">Customize Score Table</button>
+				<button class="btn btn-warning" id = "use_fixed_score">Use Simple Scores</button>
+				<button class="btn btn-danger" id = "change_score_table">Update Custom Scores</button>
+			</div>
+	</div>
 	</div>
 
 	<script src="./js/sequence_alignment_mouse.js"></script>
