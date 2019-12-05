@@ -2,7 +2,7 @@
 	margin-bottom: 20px;
 }
 .container-fluid {
-	background-image: url('../img/dna.jpg');
+	background-image: url('/img/dna.jpg');
 }
 span {
   display: inline-block;

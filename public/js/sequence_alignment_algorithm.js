@@ -6,14 +6,7 @@
 */
 
 
-/*cosnt Probability */ 
-const prob_A_appear = 0.3;
-const prob_C_appear = 0.2;
-const prob_G_appear = 0.2;
-const prob_T_appear = 0.3;
-
-const prob_mutate_same = 0.8;
-const prob_delete = 0.25;
+/*cosnt Probability */
 
 const pA = 0.3;
 const pC = 0.5;

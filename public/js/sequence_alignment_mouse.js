@@ -1,3 +1,4 @@
+
 //global constant variables
  var MATCH_COLOR = "#90EE90";
  var MISMATCH_COLOR = "#fff";
@@ -9,17 +10,10 @@ var ORIGIN_NAME = "#origin";
 var MUTATE_NAME = "#mutate";
 
 //level values
-var LEVLE_ONE_LENGTH = 10;
-var LEVLE_ONE_MUTATE_SAME = 0.8;
-var LEVLE_ONE_DELETE_COUNT = 2;
+var sequence_length = 10;
+var mutation_probability = 0.2;
+var delete_count = 5;
 
-var LEVLE_TWO_LENGTH = 12;
-var LEVLE_TWO_MUTATE_SAME = 0.7;
-var LEVLE_TWO_DELETE_COUNT = 3;
-
-var LEVLE_THREE_LENGTH = 15;
-var LELVE_THREE_MUTATE_SAME = 0.6;
-var LLEVEL_THREE_DELETE_COUNT = 4;
 
 var match_score = parseInt($("#match_score").val());
 var mismatch_score = parseInt($("#mismatch_score").val());
@@ -113,8 +107,12 @@ DNA_sequence_table.prototype.create = function(ori, mut){
 
 	}
 
-	//find the optimal score matrix for two sequences 
+	//find the optimal score matrix for two sequences
+	var d = new Date();
+	var n = d.getMilliseconds();
 	sequence_matrix = get_maximum_seq_alignment_score(this.origin, this.mutate, match_score, mismatch_score, gap_penalty, USE_SCORE_TABLE, score_table);
+	d = new Date();
+	n = d.getMilliseconds();
 	//get optimal score from the matrix
 	maximum_score = sequence_matrix.table[this.mutate.length][this.origin.length];
 	$("#max_score").text("Max Score : " + maximum_score);
@@ -614,7 +612,6 @@ function level_change(target, table, length, prob, delete_num){
 
 
 function init(){
-
 	//show timer
 	 time_show();
 	 $("#score_table").hide();
@@ -622,9 +619,9 @@ function init(){
 	 $("#use_fixed_score").hide();
 	 //set initial level 
 
-	 current_level_length = LEVLE_ONE_LENGTH;
-	 current_level_prob = LEVLE_ONE_MUTATE_SAME;
-	 current_level_delete_count = LEVLE_ONE_DELETE_COUNT;
+	 current_level_length = sequence_length;
+	 current_level_prob = mutation_probability;
+	 current_level_delete_count = delete_count;
 
 	//make sequences
 	var seq1 = make_sequence(current_level_length);
@@ -681,7 +678,7 @@ function init(){
 	});
 
 	$("#level_one").on("click", function(){
-		level_change($(this),table, LEVLE_ONE_LENGTH, LEVLE_ONE_MUTATE_SAME, LEVLE_ONE_DELETE_COUNT);
+		level_change($(this),table, sequence_length, mutation_probability, delete_count);
 
 
 	});
