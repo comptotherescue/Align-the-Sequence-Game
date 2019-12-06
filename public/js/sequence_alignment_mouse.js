@@ -1,4 +1,16 @@
-
+var firebaseConfig = {
+    apiKey: "AIzaSyCtT8mqkjhFwv9J4ysKX4a5PtjpkQnt4M0",
+    authDomain: "align-that-sequence.firebaseapp.com",
+    databaseURL: "https://align-that-sequence.firebaseio.com",
+    projectId: "align-that-sequence",
+    storageBucket: "align-that-sequence.appspot.com",
+    messagingSenderId: "700453255847",
+    appId: "1:700453255847:web:6fcb71ad31d2c690e33982",
+    measurementId: "G-LHG23KKJHM"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
 
 //global constant variables
  var MATCH_COLOR = "#90EE90";
@@ -621,8 +633,11 @@ function init(){
 	 $("#use_fixed_score").hide();
 	 //set initial level 
 
-	 
-	  
+	 var database  = firebase.database();
+	 firebase.database().ref('users/' + "aditya").set({
+		username: 'Aditya',
+		email: 'a.kulkarni@ufl.edu'
+	  });
 	 current_level_length = sequence_length;
 	 current_level_prob = mutation_probability;
 	 current_level_delete_count = delete_count;
