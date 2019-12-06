@@ -625,7 +625,7 @@ function init(){
 	 $("#change_score_table").hide();
 	 $("#use_fixed_score").hide();
 	 //set initial level 
-
+	 $("#result").hide().text("Instructions : Enter name to start the game").fadeIn('slow');
 	 current_level_length = sequence_length;
 	 current_level_prob = mutation_probability;
 	 current_level_delete_count = delete_count;
@@ -709,7 +709,6 @@ function init(){
 	});
 
 	$('#use_score_talbe').on('click', function(){
-		$('#use_score_talbe').hide();
 		$('#change_score_table').show();
 		USE_SCORE_TABLE = 1;
 		$("#info1").hide();

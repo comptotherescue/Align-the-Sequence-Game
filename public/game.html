@@ -25,39 +25,50 @@
 </head>
 <body>
 	<div class="container-fluid">
-				<div>
+				<div class="row">
 						<div style="display:flex;padding:20px" class="col-md-6">	
 							<div style="padding: 0px 10px;" id="time"> </div>
 							<div id="max_score"></div>
 							<div id="current_score"></div>
-							<div id="result"></div>
 						</div>
 						<div class="col-md-6" style="padding: 20px">
 							<div class="row level_buttons">
-								<input id="name" type="text" placeholder="Enter username"></input>
+							<div class="form-group">
+    							<label style="color:white" for="name">Name</label>
+    							<input class="width:40%" type="text" class="form-control" id="name" aria-describedby="namedesc" placeholder="Enter username">
 								<button disabled class="btn btn-primary" id = "start">Start</button>
 								<button class = "btn btn-primary" id="regenerate_sequence">Recreate Table</button>
+  							</div>
 							</div>
 						</div>
 				</div>
+		<div class="row">		
 		<div class="col-md-6" style="padding: 20px">
 								<div class="col-md-6" style="color: oldlace" id="seq_one_str"> </div>
 								<div class="col-md-6" style="color: oldlace" id="seq_two_str"> </div>
 		</div>
-		<div class="container" id="sequence_table">
-		<div class="row">
-			<div class="col-md-12" id="origin">
-			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12" id="mutate">
-			</div>
-		</div>
-		<div class="row">
-				<div class="col-md-12" id="score">
+		<div class="col-md-6" id="sequence_table">
+			<div class="row">
+				<div class="col-md-12" id="origin">
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12" id="mutate">
+				</div>
+			</div>
+			<div class="row">
+					<div class="col-md-12" id="score">
+					</div>
+			</div>
+			<div id="result"></div>
+			<div class="row" style="padding:20px">
+			<div class="col-md-6"><button class="btn btn-warning" id = "use_score_talbe">Customize Score Table</button></div>
+			<p class="col-md-6"><a class="btn btn-primary" href="analysis.html" role="button">Check Leaderboard</a></p>
+			</div>
 		</div>
-		<div class="row info">
+		<div class="col-md-6">
+			<div class="row info">
 				<div class='col-md-4' id = "score_table">
 					<table class="table">
 						 <thead>
@@ -77,17 +88,18 @@
 				</div>
 			</div>	
 			<div class="row info">
-			<div id="info1">Match Score <input style="color: black" type="number" id="match_score" value="20"></div>
-			<div id="info2">Mismatch Score<input  style="color: black" type="number" id="mismatch_score" value="-10"></div>
-			<div id="info3">Gap Score<input style="color: black" id="gap_score" type="number" value="-20"></div>
-			<div style="padding:15px 20px">
-				<button class="btn btn-warning" id = "use_score_talbe">Customize Score Table</button>
-				<button class="btn btn-warning" id = "use_fixed_score">Use Simple Scores</button>
-				<button class="btn btn-danger" id = "change_score_table">Update Custom Scores</button>
+				<input hidden style="color: black" type="number" id="match_score" value="20">
+				<input hidden style="color: black" type="number" id="mismatch_score" value="-10">
+				<input hidden style="color: black" id="gap_score" type="number" value="-20">
+				<div style="padding:15px 20px">
+					<button class="btn btn-warning" id = "use_fixed_score">Use Simple Scores</button>
+			
+					<button class="btn btn-danger" id = "change_score_table">Update Custom Scores</button>
+				</div>
 			</div>
-			<p><a style="margin-left: 1125px;margin-top: 112px;background-color: darkgoldenrod;" class="btn btn-lg btn-primary" href="analysis.html" role="button">Show Analysis</a></p>
 	</div>
 	</div>
+		</div>
    	<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
 	<script src="/js/firebaseconfig.js"></script>
