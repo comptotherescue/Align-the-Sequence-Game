@@ -16,52 +16,47 @@
 	<script src="./js/sequence_alignment_algorithm.js"></script>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+	<style>
+		body, html {
+		height: 100%;
+		margin: 0;
+		}
+	</style>
 </head>
 <body>
 	<div class="container-fluid">
 				<div>
-						<div style="display:flex">	
+						<div style="display:flex;padding:20px" class="col-md-6">	
 							<div style="padding: 0px 10px;" id="time"> </div>
 							<div id="max_score"></div>
 							<div id="current_score"></div>
 							<div id="result"></div>
 						</div>
-						<div class="row" style="padding: 20px">
-								<div class="col-md-6" style="color: oldlace" id="seq_one_str"> </div>
-								<div class="col-md-6" style="color: oldlace" id="seq_two_str"> </div>
+						<div class="col-md-6" style="padding: 20px">
+							<div class="row level_buttons">
+								<input id="name" type="text" placeholder="Enter username"></input>
+								<button disabled class="btn btn-primary" id = "start">Start</button>
+								<button class = "btn btn-primary" id="regenerate_sequence">Recreate Table</button>
+							</div>
 						</div>
 				</div>
-		
+		<div class="col-md-6" style="padding: 20px">
+								<div class="col-md-6" style="color: oldlace" id="seq_one_str"> </div>
+								<div class="col-md-6" style="color: oldlace" id="seq_two_str"> </div>
+		</div>
 		<div class="container" id="sequence_table">
 		<div class="row">
-
 			<div class="col-md-12" id="origin">
-				
-
 			</div>
-		
-			
 		</div>
 		<div class="row">
-
 			<div class="col-md-12" id="mutate">
-				
-
 			</div>
-			
 		</div>
-		
 		<div class="row">
-				<div class="col-md-12" id="score"> </div>
-		</div>
-		<div class="row" style="padding: 20px">
-			<div class="row level_buttons">
-				<div class="col-md-6">
-					<button class="btn btn-primary" id = "start">Start</button>
-					<button class = "btn btn-primary" id="regenerate_sequence">Recreate Table</button>
+				<div class="col-md-12" id="score">
 				</div>
-			</div>
-			</div>
+		</div>
 		<div class="row info">
 				<div class='col-md-4' id = "score_table">
 					<table class="table">

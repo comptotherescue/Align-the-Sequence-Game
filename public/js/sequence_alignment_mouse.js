@@ -9,6 +9,7 @@ var ITEM_BACKGORUND_OPACITY = 0.7;
 
 var ORIGIN_NAME = "#origin";
 var MUTATE_NAME = "#mutate";
+var starttime = 0;
 
 //level values
 var sequence_length = 10;
@@ -348,6 +349,9 @@ function check_game_end_condition(score){
 			$("#result").hide().text("Result: Congratulations! You reached the maximum score.").fadeIn('slow');
 			start = 0;
 			time_stop();
+			var username = $("#name").val(); 
+			var value =  (new Date()).getTime() - starttime;
+			firebase.database().ref('scoreboard/').child(username).set(value);
 		}
 	}
 }
@@ -601,7 +605,8 @@ function level_change(target, table, length, prob, delete_num){
 	 	current_level_delete_count = delete_num;
 
 	 	
-	 	time_start();
+		 time_start();
+		 starttime = (new Date()).getTime();
 		recreate(table);
 
 		target.addClass("active");
@@ -621,11 +626,6 @@ function init(){
 	 $("#use_fixed_score").hide();
 	 //set initial level 
 
-	 var database  = firebase.database();
-	 firebase.database().ref('users/' + "aditya").set({
-		username: 'Aditya',
-		email: 'a.kulkarni@ufl.edu'
-	  });
 	 current_level_length = sequence_length;
 	 current_level_prob = mutation_probability;
 	 current_level_delete_count = delete_count;
@@ -676,11 +676,19 @@ function init(){
 		$("#result").hide().text("Status : Game in progress!").fadeIn('slow');
 		start = 1;
 		time_start();
+		starttime = (new Date()).getTime();
+		var username = $("#name").val();
+		var database  = firebase.database();
+		firebase.database().ref('scoreboard/').child(username).set(0);
 	});
 		
+	$('#name').bind('keyup', function() {
+		if($("#name").val()) $('#start').removeAttr('disabled');
+	});
 
 	$("#regenerate_sequence").on("click", function(){
 			time_start();
+			starttime = (new Date()).getTime();
 			recreate(table);
 	});
 
@@ -709,6 +717,7 @@ function init(){
 		$("#score_table").show();
 		$("#use_fixed_score").show();
 		time_start();
+		starttime = (new Date()).getTime();
 		recreate(table);
 	});
 
@@ -721,6 +730,7 @@ function init(){
 		$("#score_table").hide();
 		$("#use_fixed_score").hide();
 		time_start();
+		starttime = (new Date()).getTime();
 		recreate(table);
 	});
 	
@@ -757,6 +767,7 @@ function init(){
 
 		else{
 			time_start();
+			starttime = (new Date()).getTime();
 			recreate(table);
 		}
 
